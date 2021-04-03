@@ -167,3 +167,8 @@ PYUNAPIDLL_API int __stdcall PYunAPICryptoMD5(char *input, char *output);
  * 计算input字符串CRC16值
  */
 PYUNAPIDLL_API int __stdcall PYunAPICryptoCRC(char *input, char *output, int algorithm);
+
+/**
+ * 获取SDK API等级
+ */
+PYUNAPIDLL_API int __stdcall PYunAPILevel();

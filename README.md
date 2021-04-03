@@ -348,15 +348,22 @@ getchar();
 void __stdcall PYunAPIDestroy();
 ```
 
-### 7. 获取SDK版本
+### 7. 获取SDK版本及API版本
 
 上层应用可通过调用该方法获取当前SDK版本信息。
 
-```java
+```c
 /**
  * 获取当前SDK版本号
  */
 char* __stdcall PYunAPIVersion();
+```
+
+```c
+/**
+ * 获取当前SDK API等级, 版本约新值越大
+ */
+char* __stdcall PYunAPILevel();
 ```
 
 ### 8. 内存拷贝
