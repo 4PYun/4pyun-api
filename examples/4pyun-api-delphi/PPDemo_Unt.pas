@@ -11,9 +11,11 @@ type
     Button1: TButton;
     Memo1: TMemo;
     Button2: TButton;
+    Button3: TButton;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     { Private declarations }
     procedure  PP_SumPayJE (CarNo, passport,gate_id :String ;seqno:Integer)  ;
@@ -165,6 +167,7 @@ var
   phost ,ptype ,uuid  ,psign_mac :Pchar;
   port : Integer;
   iRet : Integer;
+  iSDKLevel : Integer;
   A : Integer ;
   ExeFile :String;
 
@@ -172,6 +175,16 @@ begin
    
   ExeFile := ExtractFilepath(application.exename);
 
+  // 读取SDK API等级，必须执行！！！！
+  iSDKLevel := PYunAPILevel();
+
+  Memo1.Lines.Add('---SDK LEVEL=' + IntToStr(iSDKLevel));
+  // 防止低版本SDK不稳定这里判断<10拒绝启动SDK
+  if (iSDKLevel < 10) THEN
+  begin
+    Memo1.Lines.Add('---SDK版本过低, 请升级SDK版到1.0.6.32+');
+    Abort
+  end;
 
   // 1.1 设置事件拦截回调函数
   PYunAPIHookEvent(@PYunAPIEventCallback);
@@ -211,8 +224,8 @@ begin
   phost    :='sandbox.gate.4pyun.com';                 //云平台域名
   port     :=8661;                                      //云平台端口
   ptype    :='public:parking:agent';                    //客户端类型
-  uuid     :='2adf6966-1c06-4e09-91ea-354ffc7df916';    //客户端UUID, 一个UUID只能运行一个实例
-  psign_mac:='XGbVfP1oC21UHkwn';                        //接口通信JSON签名计算密钥
+  uuid     :='49f0cc52-e8c7-41e3-b54d-af666b8cc11a';    //客户端UUID, 一个UUID只能运行一个实例
+  psign_mac:='123';                        //接口通信JSON签名计算密钥
   iRet :=PYunAPIStart( phost ,port ,ptype,uuid,psign_mac );
   if iRet=0 then
      Memo1.Lines.Add('---启动API成功')
@@ -228,6 +241,12 @@ end;
 procedure TPPDemo_Frm.FormShow(Sender: TObject);
 begin
   Button1Click(self);
+end;
+
+procedure TPPDemo_Frm.Button3Click(Sender: TObject);
+begin
+  PYunAPILevel();
+  PYunAPIVersion();
 end;
 
 end.

@@ -39,4 +39,13 @@ object PPDemo_Frm: TPPDemo_Frm
     TabOrder = 2
     OnClick = Button2Click
   end
+  object Button3: TButton
+    Left = 104
+    Top = 224
+    Width = 75
+    Height = 25
+    Caption = 'SDK'#29256#26412
+    TabOrder = 3
+    OnClick = Button3Click
+  end
 end

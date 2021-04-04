@@ -46,9 +46,14 @@ CONST
  //当程序关闭时调用该方法可以主动关闭和云端链接并释放资源。
  procedure PYunAPIDestroy(); stdcall; external '4pyun-api.dll';
 
-
  //发送请求结果响应
  Function PYunAPIReply( seqno :Integer; payload :Pchar) : Integer; stdcall; external '4pyun-api.dll';
+
+ //获取当前SDK API等级, 版本越新值越大
+ Function PYunAPILevel() : Integer; stdcall; external '4pyun-api.dll';
+ 
+ //获取当前SDK版本号
+ Function PYunAPIVersion() : Integer; stdcall; external '4pyun-api.dll';
 
 implementation
 
