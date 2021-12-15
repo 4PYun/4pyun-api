@@ -3,6 +3,10 @@ PYunAPI SDK
 
 #### 版本更新
 
+##### [v1.0.6.34] - 2021/12/15
+
+- 处理在某些语言环境下心跳异常的情况。
+
 ##### [v1.0.6.32] - 2021/04/03
 
 - 优化日志处理逻辑;
@@ -302,7 +306,7 @@ int __stdcall PYunAPIStart(char *host, unsigned int port, char *type, char *uuid
 **示例**
 
 ```c
-int idle_time = 60000 * 10;
+int idle_time = 1000 * 30;
 int auth_time = 1000 * 30;
 int dev_mode = 0;
 char *host = "sandbox.gate.4pyun.com";
