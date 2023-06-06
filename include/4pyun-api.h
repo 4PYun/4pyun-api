@@ -32,6 +32,8 @@
 #define PYUNAPI_OPT_FINGERPRINT     0xfff4
 // 设置单线程工作模式
 #define PYUNAPI_OPT_SINGLE_THREAD   0xfff3
+// 设置应答超时时间, 单位ms
+#define PYUNAPI_OPT_REPLY_TIME      0xfff2
 
 // -------------------------
 // SDK API 事件

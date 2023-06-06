@@ -3,6 +3,10 @@ PYunAPI SDK
 
 #### 版本更新
 
+##### [v1.0.6.38] - 2023/06/01
+
+- 支持根据心跳应答检测网络状态，若心跳发送未及时收到心跳应答则触发网络重连。
+
 ##### [v1.0.6.36] - 2022/03/20
 
 - 处理在某些语言环境下心跳异常的情况。
@@ -159,6 +163,7 @@ int __stdcall PYunAPISetOpt(int optname, void *optval);
 | PYUNAPI_OPT_HOST_ADDR   | 0xfff6 | 当前设备本地IP  | string | `NULL`          |
 | PYUNAPI_OPT_VENDOR      | 0xfff5 | 当前设备供应商  | string | `NULL`          |
 | PYUNAPI_OPT_FINGERPRINT | 0xfff4 | 当前硬件指纹  | string | `NULL`          |
+| PYUNAPI_OPT_REPLY_TIME | 0xfff2 | 应答超时时间, 单位ms  | string | 60000      |
 
 **示例**
 
